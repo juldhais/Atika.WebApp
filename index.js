@@ -1,5 +1,6 @@
 $(function() {
   getQuestion();
+  $("#playerName").val(localStorage.getItem("playerName"));
 });
 
 var baseUrl = "https://atika.azurewebsites.net";
@@ -42,5 +43,11 @@ function submitAnswer() {
       $("#score").text(response.score);
       $("#answer").val("");
       getQuestion();
+      $("#answer").focus();
     });
+}
+
+function savePlayerName() {
+  let playerName = $("#playerName").val();
+  localStorage.setItem("playerName", playerName);
 }
